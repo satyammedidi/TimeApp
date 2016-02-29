@@ -121,7 +121,7 @@ class LoginWindow: NSWindowController
                 alert.informativeText = "Successfully Created"
                 alert.runModal()
                 password.stringValue = ""
-                userName.stringValue = ""
+               // userName.stringValue = ""
                 //windowDidLoad()
                 loginButton.title = "LogIn"
                 loginButton.tag = loginButtonTag
