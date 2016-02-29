@@ -37,6 +37,7 @@ class LoginWindow: NSWindowController
          }
     }
     
+    
     override var windowNibName:String
     {
         return "LoginWindow"
@@ -49,21 +50,22 @@ class LoginWindow: NSWindowController
         defaults.removeObjectForKey("pasword")
         password.stringValue = ""
         userName.stringValue = ""
+        //loginButton.title = "Create"
+       // loginButton.tag = createLoginButtonTag
         windowDidLoad()
     }
     
     @IBAction func forgotPassword(sender: NSButton)
     {
         self.window?.close()
-        let fpwc = ForgotPasswordWindow(windowNibName: "ForgotPasswordWindow")
-        fpwc.showWindow(self)
-        forgotPassword = fpwc
+        let forgot = ForgotPasswordWindow(windowNibName: "ForgotPasswordWindow")
+        forgot.showWindow(self)
+        forgotPassword = forgot
     }
     
     @IBAction func login(sender: NSButton)
     {
-        if sender.tag == loginButtonTag
-        {
+        if sender.tag == loginButtonTag        {
             
             if (userName.stringValue == "" || password.stringValue == "")
             {
@@ -82,16 +84,16 @@ class LoginWindow: NSWindowController
                 alert.runModal()
                 password.stringValue = ""
                 self.window?.close()
-                let ts = TimeSheetWindow(windowNibName: "TimeSheetWindow")
-                ts.showWindow(self)
-                timeSheetLayout = ts
+                let time = TimeSheetWindow(windowNibName: "TimeSheetWindow")
+                time.showWindow(self)
+                timeSheetLayout = time
             }
                 
             else
             {
                 let alert = NSAlert()
                 alert.messageText = "Error"
-                alert.informativeText = "Wrong Password "
+                alert.informativeText = "Entered Wrong Password "
                 password.stringValue = ""
                 alert.runModal()
             }
@@ -121,6 +123,10 @@ class LoginWindow: NSWindowController
                 password.stringValue = ""
                 userName.stringValue = ""
                 windowDidLoad()
+               // loginButton.title = "LogIn"
+               // loginButton.tag = loginButtonTag
+
+                
 
             }
         }

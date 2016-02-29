@@ -67,7 +67,7 @@
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dco-XS-CIS">
                         <rect key="frame" x="216" y="2" width="48" height="19"/>
-                        <buttonCell key="cell" type="recessed" title="Reset" bezelStyle="recessed" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lrV-nU-fqa">
+                        <buttonCell key="cell" type="recessed" title="Reset" bezelStyle="recessed" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="lrV-nU-fqa">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                             <font key="font" metaFont="systemBold" size="12"/>
                         </buttonCell>
