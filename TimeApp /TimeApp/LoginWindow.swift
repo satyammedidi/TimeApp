@@ -50,9 +50,9 @@ class LoginWindow: NSWindowController
         defaults.removeObjectForKey("pasword")
         password.stringValue = ""
         userName.stringValue = ""
-        //loginButton.title = "Create"
-       // loginButton.tag = createLoginButtonTag
-        windowDidLoad()
+        loginButton.title = "Create"
+        loginButton.tag = createLoginButtonTag
+      // windowDidLoad()
     }
     
     @IBAction func forgotPassword(sender: NSButton)
@@ -122,9 +122,9 @@ class LoginWindow: NSWindowController
                 alert.runModal()
                 password.stringValue = ""
                 userName.stringValue = ""
-                windowDidLoad()
-               // loginButton.title = "LogIn"
-               // loginButton.tag = loginButtonTag
+                //windowDidLoad()
+                loginButton.title = "LogIn"
+                loginButton.tag = loginButtonTag
 
                 
 
