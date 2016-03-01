@@ -7,6 +7,9 @@
 //
 
 import Cocoa
+import SecurityFoundation
+
+let keychain_keyName = "password"
 
 class LoginWindow: NSWindowController
 {
@@ -14,8 +17,12 @@ class LoginWindow: NSWindowController
     @IBOutlet var password: NSSecureTextField!
     @IBOutlet var loginButton: NSButton!
     
+    let keychain = KeychainSwift()
+    
     let createLoginButtonTag = 0
     let loginButtonTag = 1
+    
+    
     
     var timeSheetLayout:TimeSheetWindow? = nil
     var forgotPassword:ForgotPasswordWindow? = nil
@@ -52,7 +59,7 @@ class LoginWindow: NSWindowController
         userName.stringValue = ""
         loginButton.title = "Create"
         loginButton.tag = createLoginButtonTag
-      // windowDidLoad()
+     
     }
     
     @IBAction func forgotPassword(sender: NSButton)
@@ -112,17 +119,23 @@ class LoginWindow: NSWindowController
             }
             else
             {
-                let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                defaults.setObject(userName.stringValue, forKey: "username")
-                defaults.setObject(password.stringValue, forKey: "password")
+                let hasKey = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
+                if hasKey == false
+                {
+                    NSUserDefaults.standardUserDefaults().setObject(userName.stringValue, forKey: "userName")                }
                 
+                
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasPassword")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                keychain.set(password.stringValue, forKey: keychain_keyName)
+                
+            
                 let alert = NSAlert()
                 alert.messageText = "Success"
                 alert.informativeText = "Successfully Created"
                 alert.runModal()
                 password.stringValue = ""
-               // userName.stringValue = ""
-                //windowDidLoad()
+               
                 loginButton.title = "LogIn"
                 loginButton.tag = loginButtonTag
 

@@ -10,6 +10,7 @@
 		753F1E9B1C8561FA0046A6FD /* KeychainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F1E9A1C8561FA0046A6FD /* KeychainSwift.swift */; };
 		753F1E9D1C8564610046A6FD /* KeychainSwiftAccessOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F1E9C1C8564610046A6FD /* KeychainSwiftAccessOptions.swift */; };
 		753F1E9F1C8564B00046A6FD /* TegKeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F1E9E1C8564B00046A6FD /* TegKeychainConstants.swift */; };
+		753F1EA21C8569940046A6FD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753F1EA11C8569940046A6FD /* Security.framework */; };
 		75B18F911C80534D00AD27B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75B18F901C80534D00AD27B2 /* Assets.xcassets */; };
 		75B18F941C80534D00AD27B2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75B18F921C80534D00AD27B2 /* MainMenu.xib */; };
 		75B18FA21C80537F00AD27B2 /* Sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B18F9C1C80537F00AD27B2 /* Sheet.png */; };
@@ -32,6 +33,7 @@
 		753F1E9C1C8564610046A6FD /* KeychainSwiftAccessOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwiftAccessOptions.swift; sourceTree = "<group>"; };
 		753F1E9E1C8564B00046A6FD /* TegKeychainConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegKeychainConstants.swift; sourceTree = "<group>"; };
 		753F1EA01C8564DF0046A6FD /* KeychainSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainSwift.h; sourceTree = "<group>"; };
+		753F1EA11C8569940046A6FD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		75B18F8B1C80534D00AD27B2 /* TimeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B18F901C80534D00AD27B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75B18F931C80534D00AD27B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				753F1EA21C8569940046A6FD /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +79,7 @@
 		75B18F821C80534D00AD27B2 = {
 			isa = PBXGroup;
 			children = (
+				753F1EA11C8569940046A6FD /* Security.framework */,
 				753F1E991C8561E10046A6FD /* KeyChainSwift */,
 				75B18F9B1C80536D00AD27B2 /* Images */,
 				75B18F8D1C80534D00AD27B2 /* TimeApp */,
