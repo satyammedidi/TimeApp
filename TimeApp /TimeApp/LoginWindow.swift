@@ -9,7 +9,7 @@
 import Cocoa
 import SecurityFoundation
 
-//let keychain_keyName = "password"
+let Keychain_keyName = "password"
 
 
 
@@ -133,7 +133,7 @@ class LoginWindow: NSWindowController
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasPassword")
                 NSUserDefaults.standardUserDefaults().synchronize()
                 
-                keyChain.set(password.stringValue, forKey: "password")
+                keyChain.set(password.stringValue, forKey: Keychain_keyName)
                 
             
                 let alert = NSAlert()
@@ -144,9 +144,6 @@ class LoginWindow: NSWindowController
                
                 loginButton.title = "LogIn"
                 loginButton.tag = loginButtonTag
-
-                
-
             }
         }
     }
@@ -158,7 +155,7 @@ class LoginWindow: NSWindowController
 
 func checkLogin(username: String, password: String ) -> Bool
 {
-    if (password == keyChain.get ("password")) && username == (NSUserDefaults.standardUserDefaults().valueForKey("userName") as? String)!
+    if (password == keyChain.get (Keychain_keyName)) && username == (NSUserDefaults.standardUserDefaults().valueForKey("userName") as? String)!
     {
         return true
     }
