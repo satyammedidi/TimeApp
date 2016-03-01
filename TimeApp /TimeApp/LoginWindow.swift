@@ -9,7 +9,9 @@
 import Cocoa
 import SecurityFoundation
 
-let keychain_keyName = "password"
+//let keychain_keyName = "password"
+
+
 
 class LoginWindow: NSWindowController
 {
@@ -17,7 +19,7 @@ class LoginWindow: NSWindowController
     @IBOutlet var password: NSSecureTextField!
     @IBOutlet var loginButton: NSButton!
     
-    let keychain = KeychainSwift()
+   let keyChain = KeychainSwift()
     
     let createLoginButtonTag = 0
     let loginButtonTag = 1
@@ -30,9 +32,10 @@ class LoginWindow: NSWindowController
     override func windowDidLoad()
     {
         super.windowDidLoad()
-        if let storedUsername = NSUserDefaults.standardUserDefaults().valueForKey("username") as? String
+        
+        if let _ = NSUserDefaults.standardUserDefaults().valueForKey("username")
         {
-            userName.stringValue = storedUsername as String
+           
             loginButton.title = "LogIn"
             loginButton.tag = loginButtonTag
          }
@@ -72,7 +75,8 @@ class LoginWindow: NSWindowController
     
     @IBAction func login(sender: NSButton)
     {
-        if sender.tag == loginButtonTag        {
+        if sender.tag == loginButtonTag
+        {
             
             if (userName.stringValue == "" || password.stringValue == "")
             {
@@ -122,12 +126,14 @@ class LoginWindow: NSWindowController
                 let hasKey = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
                 if hasKey == false
                 {
-                    NSUserDefaults.standardUserDefaults().setObject(userName.stringValue, forKey: "userName")                }
+                    NSUserDefaults.standardUserDefaults().setObject(userName.stringValue, forKey: "userName")
+                }
                 
                 
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasPassword")
                 NSUserDefaults.standardUserDefaults().synchronize()
-                keychain.set(password.stringValue, forKey: keychain_keyName)
+                
+                keyChain.set(password.stringValue, forKey: "password")
                 
             
                 let alert = NSAlert()
@@ -144,28 +150,28 @@ class LoginWindow: NSWindowController
             }
         }
     }
+
+
+
+
+
+
+func checkLogin(username: String, password: String ) -> Bool
+{
+    if (password == keyChain.get ("password")) && username == (NSUserDefaults.standardUserDefaults().valueForKey("userName") as? String)!
+    {
+        return true
+    }
+    else
+    {
+        return false
+    }
+    
 }
 
 
+}
 
-
-
-    func checkLogin(username: String, password: String ) -> Bool
-    {
-       if password == NSUserDefaults.standardUserDefaults().valueForKey("password") as? String &&
-            username == NSUserDefaults.standardUserDefaults().valueForKey("username") as? String
-       {
-          return true
-       }
-       else
-       {
-         return false
-       }
-    }
-    
-    
-    
-  
 ///////create login/create button by code
 //            let pstyle = NSMutableParagraphStyle()
 //            pstyle.alignment = .CenterTextAlignment
